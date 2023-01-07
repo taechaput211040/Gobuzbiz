@@ -1,0 +1,64 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+@import "https://fonts.googleapis.com/css?family=Noto+Sans+Thai";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span {
+  font-family: "Montserrat", "Noto Sans Thai", "sans-serif";
+}
+.v-toolbar__content {
+  background-size: cover;
+}
+.bgdark_login {
+  // box-shadow: 0px 0px 24px var(--modal_boxshadow);
+  box-shadow: 0px 0px 24px rgb(0, 0, 0);
+  // background: var(--login_section_bg_page);
+  border-radius: 25px;
+  // border: 3px solid #fff;
+}
+.bg_login {
+  height: 95vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.menuIndex {
+  margin: 3px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid salmon;
+  background: salmon;
+  font-weight: bold;
+  color: white;
+}
+.mainshow {
+  min-height: 100vh;
+  max-width: 100%;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  .footerMenu {
+    position: fixed;
+    bottom: 30px;
+    width: 60%;
+    background: antiquewhite;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    .menu {
+      height: 100;
+    }
+  }
+}
+a{
+    text-decoration: none !important;
+}
