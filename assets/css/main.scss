@@ -59,6 +59,14 @@ span {
     }
   }
 }
-a{
-    text-decoration: none !important;
+a {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+.fixedstyle {
+  width: 100%;
+}
+
+pre {
+  white-space: pre-wrap;
 }

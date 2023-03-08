@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container">
     <h2>หน้าหลัก</h2>
-    <div class="row pa-3 mt-5">
+    <div class="row pa-3 mt-4">
       <NuxtLink class="col menuIndex" to="/home/sellticket"
         >จำหน่ายตั๋ว</NuxtLink
       >

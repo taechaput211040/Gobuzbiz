@@ -9,20 +9,118 @@ export default function (/* { ssrContext } */) {
     },
     actions: {
       async login({ commit }, form) {
-        try {
-          let { data } = await this.$axios.post(
-            "https://qaapi.gobuzmobile.com/api/v1/authentication/signin",
-            form
-          );
-          console.log(data, "data2222");
-          commit("set_login", data);
+        return new Promise(async (resolve, reject) => {
+          try {
+            let { data } = await this.$axios.post(
+              "https://qaapi.gobuzmobile.com/api/v1/authentication/signin",
+              form
+            );
+            console.log(data, "data2222");
+            commit("set_login", data);
 
-          return data;
-        } catch (error) {
-          console.log(error);
-        }
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+
+      //account
+      async getPolicy() {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              "https://qaapi.gobuzmobile.com/api/v1/master/customer/privacypolicy?appType=Transport&languageCode=TH"
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      async getHelp() {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              "https://qaapi.gobuzmobile.com/api/v1/help/gethelpgobuzbiz"
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      async getTermandcondition() {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              "https://qaapi.gobuzmobile.com/api/v1/master/customer/termandcondition?appType=Transport&languageCode=TH"
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      //account
+      //management
+      async getBuslinelist() {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              "https://qaapi.gobuzmobile.com/api/v1/DashBoard/GetBusLineListForDropDownByTransportId",
+              {
+                headers: {
+                  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwIiwiRnVsbE5hbWUiOiJBZG1pbmlzdHJhdG9yIiwiQXZhdGFyIjoiIiwiRW1haWwiOiIiLCJTZWNvbmRhcnlFbWFpbCI6IiIsIkRlZmF1bHRMYW5ndWFnZSI6IlRIIiwiRGVmYXVsdEN1cnJlbmN5IjoiIiwiSXNBdXRoZW50aWNhdGVkIjoiVHJ1ZSIsIklzVHJhbnNwb3J0VXNlciI6IlRydWUiLCJDdXN0b21lckdVSUQiOiIiLCJUcmFuc3BvcnRVc2VySWQiOiIyIiwiVHJhbnNwb3J0SWQiOiIyIiwiTW9iaWxlTm8iOiIwMTExMTExMTExIiwiUm9sZUNvZGUiOiJBTSIsIkF1dGhlbk1lc3NhZ2UiOiIiLCJleHAiOjE2Nzc4NDEyMjgsImlzcyI6ImRldi5nb2J1em1vYmlsZS5jb20iLCJhdWQiOiJkZXYuZ29idXptb2JpbGUuY29tIn0.3Yr2seHtgNKp5BDj4Y5nji1aUimPhp0Qjh0AhbwOqv8`,
+                },
+              }
+            );
+            resolve(data);ผ
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      async getvehicleclasslist(context, id) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/manage/getvehicleclasslist?buslineId=${id}`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      async getvehiclelistById(context, payload) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/Manage/GetVehicleListByBusline?buslineId=${payload.buslineId}&vehClassId=${payload.vehClassId}`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      async getuserlist(context) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/user/getuserlist`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
       },
     },
+
+    //management
+
     mutations: {
       set_login(state, payload) {
         console.log(payload, "dataa");
