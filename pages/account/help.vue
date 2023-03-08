@@ -24,7 +24,7 @@ export default {
   async mounted() {
     try {
       let { data } = await this.$store.dispatch("getHelp");
-      this.helpdata = data;
+      this.helpdata = data.Help;
     } catch (error) {
       console.log(error);
     }

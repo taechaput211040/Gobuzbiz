@@ -61,8 +61,12 @@ export default {
   },
   methods: {
     async authenWithnumber() {
-      await this.$store.dispatch("login", this.formLogin);
-      console.log(localStorage === window.localStorage);
+      try {
+        await this.$store.dispatch("login", this.formLogin);
+        await this.$router.push("/redirect");
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

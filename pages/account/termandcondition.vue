@@ -19,7 +19,7 @@ export default {
   async mounted() {
     try {
       let { data } = await this.$store.dispatch("getTermandcondition");
-      this.termandcondition = data;
+      this.termandcondition = data.Data;
     } catch (error) {
       console.log(error);
     }

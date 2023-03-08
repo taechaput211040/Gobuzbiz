@@ -68,14 +68,10 @@ export default function (/* { ssrContext } */) {
         return new Promise(async (resolve, reject) => {
           try {
             let data = await this.$axios.get(
-              "https://qaapi.gobuzmobile.com/api/v1/DashBoard/GetBusLineListForDropDownByTransportId",
-              {
-                headers: {
-                  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIwIiwiRnVsbE5hbWUiOiJBZG1pbmlzdHJhdG9yIiwiQXZhdGFyIjoiIiwiRW1haWwiOiIiLCJTZWNvbmRhcnlFbWFpbCI6IiIsIkRlZmF1bHRMYW5ndWFnZSI6IlRIIiwiRGVmYXVsdEN1cnJlbmN5IjoiIiwiSXNBdXRoZW50aWNhdGVkIjoiVHJ1ZSIsIklzVHJhbnNwb3J0VXNlciI6IlRydWUiLCJDdXN0b21lckdVSUQiOiIiLCJUcmFuc3BvcnRVc2VySWQiOiIyIiwiVHJhbnNwb3J0SWQiOiIyIiwiTW9iaWxlTm8iOiIwMTExMTExMTExIiwiUm9sZUNvZGUiOiJBTSIsIkF1dGhlbk1lc3NhZ2UiOiIiLCJleHAiOjE2Nzc4NDEyMjgsImlzcyI6ImRldi5nb2J1em1vYmlsZS5jb20iLCJhdWQiOiJkZXYuZ29idXptb2JpbGUuY29tIn0.3Yr2seHtgNKp5BDj4Y5nji1aUimPhp0Qjh0AhbwOqv8`,
-                },
-              }
+              "https://qaapi.gobuzmobile.com/api/v1/DashBoard/GetBusLineListForDropDownByTransportId"
             );
-            resolve(data);ผ
+            resolve(data);
+            ผ;
           } catch (error) {
             reject(error);
           }
@@ -85,7 +81,7 @@ export default function (/* { ssrContext } */) {
         return new Promise(async (resolve, reject) => {
           try {
             let data = await this.$axios.get(
-              `https://qaapi.gobuzmobile.com/api/manage/getvehicleclasslist?buslineId=${id}`
+              `https://qaapi.gobuzmobile.com/api/v1/Manage/GetVehicleClassList?buslineId=${id}`
             );
             resolve(data);
           } catch (error) {
@@ -109,7 +105,72 @@ export default function (/* { ssrContext } */) {
         return new Promise(async (resolve, reject) => {
           try {
             let data = await this.$axios.get(
-              `https://qaapi.gobuzmobile.com/api/user/getuserlist`
+              `https://qaapi.gobuzmobile.com/api/v1/user/getuserlist`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      //ลิสผังที่นั่ง//
+      async getSeatplanvehicle(context, id) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/seatplan/getseatplanvehicle?vehicleId=${id}`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      //ดรอปผังที่นั่ง//
+      async getDropdownTemplateList(context) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/manage/GetSeatTempleteList`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+
+      //ข้อมูลรถ//
+      async getvehicleInfo(context, id) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/manage/getvehicle?vehicleId=${id}`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      },
+      // Dropdown ประเภทรถ
+      async getvehicletypefordropdown(context, id) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/manage/getvehicletypefordropdown`
+            );
+            resolve(data);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      }, // Dropdown ยี่ห้อรถ
+      async getbrandlistfordropdown(context, id) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            let data = await this.$axios.get(
+              `https://qaapi.gobuzmobile.com/api/v1/manage/getbrandlistfordropdown`
             );
             resolve(data);
           } catch (error) {
